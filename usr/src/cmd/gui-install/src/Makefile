@@ -92,7 +92,7 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-gladeDATA_INSTALL = $(INSTALL_DATA)
+gladeDATA_INSTALL = ${INSTALL} -m 0444 -f
 DATA = $(glade_DATA)
 ETAGS = etags
 CTAGS = ctags
@@ -127,7 +127,7 @@ GMOFILES =
 GMSGFMT = /usr/bin/msgfmt
 GREP = /usr/sfw/bin/ggrep
 INSTALL_DATA = ${INSTALL} -m 644 -f
-INSTALL_PROGRAM = ${INSTALL} -f
+INSTALL_PROGRAM = ${INSTALL} -m 0555 -f
 INSTALL_SCRIPT = ${INSTALL} -f
 INSTALL_STRIP_PROGRAM = ${SHELL} $(install_sh) -f -s
 INSTOBJEXT = .mo

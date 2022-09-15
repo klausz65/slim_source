@@ -24,6 +24,8 @@
 
 include ../Makefile.cmd
 
+FILEMODE = 0444
+
 HELPFILES= \
 	FINISH_PANEL.txt \
 	INSTALL_DISK_PANEL.txt \
@@ -53,6 +55,7 @@ ROOTHELPFILES= $(HELPFILES:%=$(ROOTUSRSHARE)/gui-install/help/C/%)
 ROOTPNGFILES= $(PNGFILES:%=$(ROOTUSRSHARE)/gui-install/installmessages/%)
 
 ROOTSCHEMAFILES= $(SCHEMAFILES:%=$(ROOT)/etc/gconf/schemas/%)
+$(ROOTSCHEMAFILES) :=	FILEMODE = 0644
 
 all: 
 

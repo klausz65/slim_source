@@ -26,6 +26,8 @@
 
 include ../Makefile.lib
 
+FILEMODE = 0644
+
 all:=		TARGET=	all
 clean:=		TARGET=	clean
 clobber:=	TARGET=	clobber
@@ -42,11 +44,14 @@ PYMODS =	__init__.py \
 		ManifestRead.py \
 		SocketServProtocol.py
 
+$(ROOTPYTHONVENDORINSTALL)/__init__.py :=	FILEMODE = 0444
+
 PYCMODS=	$(PYMODS:%.py=__pycache__/%.cpython$(PYTHON3_PKGVERS).pyc)
 
 ROOTRNGSCHEMA   = $(ROOT)/usr/share/lib/xml/rng
 RNG_SCHEMA=	defval-manifest.rng
 ROOTRNGSCHEMAFILE= $(RNG_SCHEMA:%=$(ROOTRNGSCHEMA)/%)
+$(ROOTRNGSCHEMAFILE) :=	FILEMODE = 0444
 
 CLOBBERFILES = $(PYCMODS)
 CLEANFILES = $(CLOBBERFILES)

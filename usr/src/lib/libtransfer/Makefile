@@ -39,6 +39,9 @@ python:
 
 include ../Makefile.lib
 
+$(ROOTPYTHONVENDORINSTALLMODS) :=	FILEMODE = 0644
+$(ROOTPYTHONVENDORINSTALLCMODS) :=	FILEMODE = 0644
+
 all:  python
 
 install:	all $(INSDIRS) .WAIT \
