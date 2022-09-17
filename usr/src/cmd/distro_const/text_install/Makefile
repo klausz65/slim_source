@@ -26,6 +26,8 @@
 
 include ../../Makefile.cmd
 
+FILEMODE = 0444
+
 all:=           TARGET= all
 clean:=         TARGET= clean
 clobber:=         TARGET= clobber
@@ -39,6 +41,7 @@ TM_FILES=	text_install_x86_iso.sort \
 		tm_pre_boot_archive_pkg_image_mod
 		
 ROOTTM_FILES=	$(TM_FILES:%=$(ROOTDC_TM)/%)
+$(ROOTDC_TM)/tm_pre_boot_archive_pkg_image_mod :=	FILEMODE = 0555
 
 all:
 

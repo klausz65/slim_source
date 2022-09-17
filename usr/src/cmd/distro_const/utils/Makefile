@@ -26,6 +26,8 @@
 
 include ../../Makefile.cmd
 
+FILEMODE = 0555
+
 all:=		TARGET=	all
 clean:=		TARGET=	clean
 clobber:=	TARGET=	clobber
@@ -54,6 +56,7 @@ DC_UTIL_FILES=	mkrepo \
 # Note: PYCMODULES are not delivered.
 # They are only compiled for error checking purposes.
 ROOTDC_UTIL_FILES=	$(DC_UTIL_FILES:%=$(ROOTDC)/%)
+$(ROOTDC)/generic_live.xml :=	FILEMODE = 0444
 
 all:		python
 

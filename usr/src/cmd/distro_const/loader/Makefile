@@ -26,6 +26,8 @@
 
 include ../../Makefile.cmd
 
+FILEMODE = 0444
+
 all:=		TARGET=	all
 clean:=		TARGET=	clean
 clobber:=	TARGET=	clobber

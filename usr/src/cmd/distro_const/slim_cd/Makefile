@@ -39,6 +39,10 @@ SLIMCD_FILES=	slimcd_iso.sort \
 		slimcd_post_boot_archive_pkg_image_mod
 		
 ROOTSLIMCD_FILES=	$(SLIMCD_FILES:%=$(ROOTDC_SLIM)/%)
+$(ROOTSLIMCD_FILES) :=	FILEMODE = 0555
+$(ROOTDC_SLIM)/slimcd_iso.sort :=	FILEMODE = 0444
+$(ROOTDC_SLIM)/slimcd_live.xml :=	FILEMODE = 0444
+$(ROOTDC_SLIM)/slim_cd_x86.xml :=	FILEMODE = 0444
 
 all:	
 

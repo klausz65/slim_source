@@ -61,6 +61,7 @@ SOFLAGS		+= -L$(ROOTADMINLIB) -R$(ROOTADMINLIB:$(ROOT)%=%) \
 		-ldiskmgt -lfstyp -lnvpair -llogsvc -linstzones -lima
 
 ROOT_TEST_PROGS	= $(TEST_PROGS:%=$(ROOTOPTINSTALLTESTBIN)/%)
+$(ROOT_TEST_PROGS) :=	FILEMODE = 0555
 CLEANFILES	= $(TEST_PROGS)
 
 .KEEP_STATE:

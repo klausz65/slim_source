@@ -30,7 +30,7 @@ PROFATTRFILES =
 
 include $(SRC)/cmd/Makefile.cmd
 
-FILEMODE= 444
+FILEMODE = 0644
 
 all:
 

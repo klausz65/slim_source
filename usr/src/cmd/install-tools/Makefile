@@ -42,6 +42,7 @@ SCRIPTS=	usbgen \
 PROGS=		$(PY_PROGS) $(SCRIPTS)
 
 ROOTPROGS=	$(PROGS:%=$(ROOTUSRBIN)/%)
+$(ROOTPROGS) :=	FILEMODE = 0555
 
 all:		python $(PY_PROGS)
 
@@ -54,11 +55,11 @@ install: all .WAIT $(ROOTPROGS)
 
 ManifestRead: ManifestRead.py
 	$(CP) ManifestRead.py ManifestRead
-	$(CHMOD) 755 ManifestRead
+	$(CHMOD) 0555 ManifestRead
 
 ManifestServ: ManifestServ.py
 	$(CP) ManifestServ.py ManifestServ
-	$(CHMOD) 755 ManifestServ
+	$(CHMOD) 0555 ManifestServ
 
 #Compile the python files, we are not shipping the .pyc files,
 #but compiling it can help catch syntax errors.
