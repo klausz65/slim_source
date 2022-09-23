@@ -56,7 +56,7 @@ XML_REFORMAT_SW = "--format"
 DEFVAL_SCHEMA = "/usr/share/lib/xml/rng/defval-manifest.rng "
 
 # Schema to validate manifest XML doc against.
-MANIFEST_SCHEMA = "/usr/lib/python3.5/vendor-packages/osol_install/" + \
+MANIFEST_SCHEMA = "/usr/lib/python3.9/vendor-packages/osol_install/" + \
                   "distro_const/DC-manifest.rng "
 
 # Default XML value if invert isn't specified in the defval-manifest.

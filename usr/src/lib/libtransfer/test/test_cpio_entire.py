@@ -24,7 +24,7 @@
 #
 from transfer_mod import tm_perform_transfer
 
-exec(compile(open('/usr/lib/python2.4/vendor-packages/transfer_defs.py', "rb").read(), '/usr/lib/python2.4/vendor-packages/transfer_defs.py', 'exec'))
+exec(compile(open('/usr/lib/python3.9/vendor-packages/transfer_defs.py', "rb").read(), '/usr/lib/python3.9/vendor-packages/transfer_defs.py', 'exec'))
 
 num_failed = 0
 

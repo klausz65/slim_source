@@ -90,7 +90,7 @@ tmod_logprogress(PyObject *self, PyObject *args)
 	 * If there is a python callback, then call it.
 	 */
 	if (py_callback != NULL) {
-		PyEval_CallObject(py_callback, args);
+		PyObject_Call(py_callback, args, NULL);
 		return (Py_BuildValue("i", 0));
 	}
 
@@ -174,8 +174,6 @@ TM_perform_transfer(nvlist_t *nvl, tm_callback_t prog)
 		 */
 		call_Py_Finalize = B_TRUE;
 	}
-
-	PyEval_InitThreads();
 
 	/* Avoid assert tlock.locked() AssertionError */
 	Py_XDECREF(PyImport_ImportModule("threading"));

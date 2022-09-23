@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 #
 # CDDL HEADER START
 #
@@ -629,19 +629,19 @@ class ICT(object):
         return 0 upon success, error code otherwise
         '''
         _register_task(inspect.currentframe())
-        mtch = re.findall('p(\d+):boot$', raw_slice)
+        mtch = re.findall(r'p(\d+):boot$', raw_slice)
         if mtch and mtch[0]:
             p0 = raw_slice.replace('p' + mtch[0] + ':boot', 'p0')
         else:
-            mtch = re.findall('s(\d+)$', raw_slice)
+            mtch = re.findall(r's(\d+)$', raw_slice)
             if mtch and mtch[0]:
                 p0 = raw_slice.replace('s' + mtch[0], 'p0')
             else:
                 p0 = raw_slice
 
         # Note there are TABs in the blow expression.
-        # cmd = 'fdisk -W - %s | grep -v \* | grep -v \'^[<TAB> ]*$\'' % (p0)
-        cmd = 'fdisk -W - %s | grep -v \* | grep -v \'^[	 ]*$\'' % (p0)
+        # cmd = 'fdisk -W - %s | grep -v \\* | grep -v \'^[<TAB> ]*$\'' % (p0)
+        cmd = 'fdisk -W - %s | grep -v \\* | grep -v \'^[	 ]*$\'' % (p0)
         status, fdisk = _cmd_out(cmd)
         if status != 0:
             prerror('fdisk command fails to set ' + raw_slice + 
@@ -1208,8 +1208,8 @@ class ICT(object):
         newgrubmenu = self.grubmenu + '.new'
 
         # Note there are TABs in the blow expression.
-        # sedcmd = 'sed \'/\-B[ <TAB>]*\\$ZFS-BOOTFS/ i\\\nbootfs ' +\
-        sedcmd = 'sed \'/\-B[ 	]*\\$ZFS-BOOTFS/ i\\\nbootfs ' +\
+        # sedcmd = 'sed \'/\\-B[ <TAB>]*\\$ZFS-BOOTFS/ i\\\nbootfs ' +\
+        sedcmd = 'sed \'/\\-B[ 	]*\\$ZFS-BOOTFS/ i\\\nbootfs ' +\
             rootdataset + '\\\n\' ' + self.grubmenu + ' > ' + newgrubmenu
         status = _cmd_status(sedcmd)
         if status != 0:

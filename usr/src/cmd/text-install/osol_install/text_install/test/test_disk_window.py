@@ -1,4 +1,4 @@
-#!/usr/bin/python3.5
+#!/usr/bin/python
 #
 # CDDL HEADER START
 #
@@ -26,11 +26,11 @@
 To run these tests:
 
 1) nightly -n developer.sh # build the gate
-2) export PYTHONPATH=${WS}/proto/root_i386/usr/snadm/lib:${WS}/proto/root_i386/usr/lib/python3.5/vendor-packages
-3) python3.5 test_disk_window.py
+2) export PYTHONPATH=${WS}/proto/root_i386/usr/snadm/lib:${WS}/proto/root_i386/usr/lib/python3.9/vendor-packages
+3) python test_disk_window.py
 
 A single test may be run by specifying the test as an argument to step 3:
-python3.5 test_disk_window.py UpdateEditField.test_part_info_not_editable
+python test_disk_window.py UpdateEditField.test_part_info_not_editable
 
 Since the proto area is used for the PYTHONPATH, the gate must be rebuilt for
 these tests to pick up any changes in the tested code.
