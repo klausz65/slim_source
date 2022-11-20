@@ -105,6 +105,42 @@ do
 	fi
 done
 
+# ... else try network (NFS)
+if ! $MOUNT | grep -q "^/.cdrom" ; then
+	# Wait up to 60 seconds until network is up
+	RETRIES=0
+	until
+		ROOTPATH=$(/sbin/dhcpinfo Rootpath)
+	do
+		RETRIES=$((RETRIES + 1))
+		((RETRIES > 10)) && break
+		sleep 6
+	done
+	# Get scheme
+	SCHEME=${ROOTPATH%%://*}
+	[ "$SCHEME" = "$ROOTPATH" ] && SCHEME=
+	# Handle nfs://<ip-address>/<path> form
+	if [ "$SCHEME" = "nfs" ] ; then
+		ROOTPATH=${ROOTPATH#nfs://}
+		IPADDRESS=${ROOTPATH%%/*}
+		ROOTPATH=${ROOTPATH#$IPADDRESS}
+	fi
+	# Handle <ip-address>:/<path> form
+	if [ -z "$SCHEME" -a "${ROOTPATH/:}" != "$ROOTPATH" ] ; then
+		SCHEME="nfs"
+		IPADDRESS=${ROOTPATH%%:*}
+		ROOTPATH=${ROOTPATH#$IPADDRESS:}
+	fi
+	# Try to mount
+	if [ "$SCHEME" = "nfs" -a "$IPADDRESS" -a "$ROOTPATH" ] ; then
+		if $MOUNT $IPADDRESS:$ROOTPATH "/.cdrom" ; then
+			if [ "$volsetid" != "$(<"/.cdrom/.volsetid")" ] ; then
+				/sbin/umount -f /.cdrom
+			fi
+		fi
+	fi
+fi
+
 # Check if mount of /.cdrom failed.
 $MOUNT | grep "^/.cdrom"
 if [ $? -ne 0 ]; then
