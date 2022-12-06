@@ -133,7 +133,9 @@ if ! $MOUNT | grep -q "^/.cdrom" ; then
 	fi
 	# Try to mount
 	if [ "$SCHEME" = "nfs" -a "$IPADDRESS" -a "$ROOTPATH" ] ; then
-		if $MOUNT $IPADDRESS:$ROOTPATH "/.cdrom" ; then
+		# Force NFSv3 to get proper file ownership even without
+		# the nfs/mapid service
+		if $MOUNT -o vers=3 $IPADDRESS:$ROOTPATH "/.cdrom" ; then
 			if [ "$volsetid" != "$(<"/.cdrom/.volsetid")" ] ; then
 				/sbin/umount -f /.cdrom
 			fi
