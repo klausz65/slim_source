@@ -100,8 +100,10 @@ file path=usr/share/distro_const/slim_cd/slimcd_live.xml mode=0444 group=sys
 file path=usr/share/distro_const/slim_cd/slimcd_post_boot_archive_pkg_image_mod mode=0555
 file path=usr/share/distro_const/slim_cd/slimcd_pre_boot_archive_pkg_image_mod mode=0555
 file path=usr/share/distro_const/text_install/text_install_x86_iso.sort mode=0444 group=sys
+file path=usr/share/distro_const/text_install/text_install_sparc_iso.sort mode=0444 group=sys
 file path=usr/share/distro_const/text_install/text_live.xml mode=0444 group=sys
 file path=usr/share/distro_const/text_install/text_mode_sparc.xml mode=0444 group=sys
+file path=usr/share/distro_const/text_install/text_mode_sparc_minimal.xml mode=0444 group=sys
 file path=usr/share/distro_const/text_install/text_mode_x86.xml mode=0444 group=sys
 file path=usr/share/distro_const/text_install/text_mode_x86_minimal.xml mode=0444 group=sys
 file path=usr/share/distro_const/text_install/tm_pre_boot_archive_pkg_image_mod mode=0555

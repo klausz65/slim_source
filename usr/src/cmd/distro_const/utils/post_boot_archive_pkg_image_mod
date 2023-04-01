@@ -33,7 +33,6 @@
 builtin cd
 builtin cp
 builtin cut
-builtin grep
 builtin mkdir
 builtin mv
 builtin rm
@@ -43,6 +42,7 @@ ECHO=/usr/bin/echo
 LOFIADM=/usr/sbin/lofiadm
 MKISOFS=/usr/bin/mkisofs
 TIME=/usr/bin/time
+GREP=/usr/bin/grep
 
 # Define non-core-OS commands.
 MANIFEST_READ=/usr/bin/ManifestRead
@@ -187,7 +187,7 @@ LD_LIBRARY_PATH=${PKG_IMG_PATH}/usr/lib $TIME ${PKG_IMG_PATH}/${LOFIADM} \
     -C ${USER_ZLIB_ALG} ${PKG_IMG_PATH}/solaris.zlib >/dev/null \
     2>$LOFI_OUT_STR
 if [ $? -ne 0 ] ; then
-	grep "invalid algorithm name" $LOFI_OUT_STR
+	$GREP "invalid algorithm name" $LOFI_OUT_STR
 	if [ $? -eq 0 ] ; then
 		print -u2 -f "%s: %s is an invalid lofiadm algorithm\n." \
 		    "$0" "${USER_ZLIB_ALG}"
