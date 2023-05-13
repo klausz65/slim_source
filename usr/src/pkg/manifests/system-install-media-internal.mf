@@ -39,7 +39,6 @@ dir path=jack owner=jack group=staff
 dir path=jack/.config owner=jack group=staff
 dir path=jack/.config/autostart owner=jack group=staff
 dir path=jack/Desktop owner=jack group=staff
-dir path=jack/Documents owner=jack group=staff
 dir path=lib
 dir path=lib/svc
 dir path=lib/svc/manifest group=sys
