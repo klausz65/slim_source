@@ -52,6 +52,7 @@ dir path=usr/lib/python$(PYVER)
 dir path=usr/lib/python$(PYVER)/vendor-packages
 dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install
 dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/distro_const
+dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/distro_const/__pycache__
 dir path=usr/share group=sys
 dir path=usr/share/distro_const 
 dir path=usr/share/distro_const/loader

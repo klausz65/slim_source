@@ -42,7 +42,9 @@ dir path=usr/lib/python$(PYVER)
 dir path=usr/lib/python$(PYVER)/vendor-packages
 dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install
 dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/profile
+dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/profile/__pycache__
 dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/text_install
+dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/text_install/__pycache__
 dir path=usr/sbin
 dir path=usr/share group=sys
 dir path=usr/share/text-install group=sys
