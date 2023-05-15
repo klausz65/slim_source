@@ -79,6 +79,7 @@ file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ict.py mode=0755
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/install_utils.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/liblogsvc.so
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libti.so
+link path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libtransfer.so target=../../../../snadm/lib/libtransfer.so
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libzoneinfo.so
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ManifestRead.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ManifestServ.py
@@ -104,4 +105,3 @@ link path=usr/snadm/lib/liborchestrator.so target=liborchestrator.so.1
 link path=usr/snadm/lib/libtd.so target=libtd.so.1
 link path=usr/snadm/lib/libti.so target=libti.so.1
 link path=usr/snadm/lib/libtransfer.so target=libtransfer.so.1
-
