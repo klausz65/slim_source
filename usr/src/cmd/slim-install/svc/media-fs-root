@@ -67,15 +67,24 @@ elif [ $TEXTINSTALL = 1 ]; then
 	echo "\rPreparing text install image for use" >/dev/msglog
 fi
 
-# Determine if any of the USB devices contains a UFS filesystem.
+# Determine if any of the USB devices contains a UFS/HSFS filesystem.
 # For devices that do, attempt to mount them to see if the 
 # compressed /usr filesystem exists
 
+PTYP=`/sbin/uname -p`
+if [ $PTYP = "sparc" ]; then
+	FSTYP=hsfs
+	OPTIONS="ro"
+else
+	FSTYP=ufs
+	OPTIONS="nologging,noatime"
+fi
+
 /sbin/listusb | while read dev rdev
 do
-	/usr/lib/fs/ufs/fstyp $rdev 2>&1 | grep "^ufs$"
+	/usr/lib/fs/${FSTYP}/fstyp $rdev 2>&1 | grep "^${FSTYP}$"
 	if [ $? -eq 0 ]; then
-		$MOUNT -F ufs -o nologging,noatime $dev /.cdrom || break
+		$MOUNT -F $FSTYP -o $OPTIONS $dev /.cdrom || break
 		if [[ "$volsetid" != "$( < "/.cdrom/.volsetid" )" ]]; then
 			/sbin/umount -f $dev
 			continue
