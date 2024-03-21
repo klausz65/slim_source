@@ -62,6 +62,12 @@ else
 fi
 
 #
+# Build device tree to make sure we do have device nodes
+# to mount install image.
+echo 'Configuring devices.' > /dev/msglog 2>&1
+/usr/sbin/devfsadm >/dev/msglog 2>&1
+
+#
 # Workaround for devfs lazy init. The sd nodes are not
 # created till you try to access them.
 #
