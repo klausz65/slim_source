@@ -149,7 +149,7 @@ print "Configuring Gnome in package image area"
 #it is just a character type special file. 
 #
 
-echo "dev/null" | ($CD / ; $CPIO -Lp $PKG_IMG_PATH)
+#echo "dev/null" | ($CD / ; $CPIO -Lp $PKG_IMG_PATH)
 
 #
 # The GNOME scripts decide whether to regenerate its caches
@@ -171,15 +171,18 @@ $RM -f ${PKG_IMG_PATH}/usr/share/applications/mimeinfo.cache \
 	${PKG_IMG_PATH}/etc/amd64/gtk-2.0/gtk.immodules \
 	${PKG_IMG_PATH}/etc/gtk-2.0/gdk-pixbuf.loaders \
 	${PKG_IMG_PATH}/etc/amd64/gtk-2.0/gdk-pixbuf.loaders \
-	${PKG_IMG_PATH}/usr/share/mime/mimeinfo.cache
+	${PKG_IMG_PATH}/usr/share/mime/mimeinfo.cache \
+	${PKG_IMG_PATH}/usr/share/glib-2.0/schemas/gschemas.compiled
 
-$CHROOT $PKG_IMG_PATH $SH /lib/svc/method/desktop-mime-cache start
+$CHROOT $PKG_IMG_PATH /usr/bin/update-desktop-database
 $CHROOT $PKG_IMG_PATH $SH /lib/svc/method/gconf-cache start
+$CHROOT $PKG_IMG_PATH /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas/
 $CHROOT $PKG_IMG_PATH $SH /lib/svc/method/input-method-cache start
 $CHROOT $PKG_IMG_PATH $SH /lib/svc/method/mime-types-cache start
 $CHROOT $PKG_IMG_PATH $SH /lib/svc/method/pixbuf-loaders-installer start
 $CHROOT $PKG_IMG_PATH $SH /lib/svc/method/icon-cache start
 $CHROOT $PKG_IMG_PATH $SH /lib/svc/method/gio-module-cache start
+$CHROOT $PKG_IMG_PATH /usr/bin/dconf update
 
 if [ -f ${PKG_IMG_PATH}/etc/gconf/schemas/panel-default-setup.entries ]; then
 	# We disabled gnome-netstatus-applet for the liveCD but we want it
