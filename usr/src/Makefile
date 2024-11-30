@@ -108,25 +108,14 @@ cscope:
 	       \( -name '*.[Ccshlxy]' -o -name \*.cc -o -name Makefile\* \) -print > cscope.files
 	$(CSCOPE) -b
 
-.NO_PARALLEL: cc-version cc64-version java-version
+.NO_PARALLEL: cc-version java-version
 
 # Compiler version reporting; used by nightly.
 cc-version:
 	@if $(CC) -v >/dev/null 2>/dev/null; then	\
-		$(ECHO) 32-bit compiler;		\
-		which $(CC);				\
-		$(CC) -v 2>&1 | head -1;		\
-	else						\
-		$(ECHO) No 32-bit compiler found;	\
-		exit 1;					\
-	fi
-
-cc64-version:
-	@__VERSION=`$(CC) -m64 -xc -E /dev/null 2>&1 >/dev/null`; \
-	if [ -z "$$__VERSION" ]; then			\
 		$(ECHO) 64-bit compiler;		\
 		which $(CC);				\
-		$(CC) -v 2>&1 | head -1;		\
+		$(CC) --version;			\
 	else						\
 		$(ECHO) No 64-bit compiler found;	\
 		exit 1;					\

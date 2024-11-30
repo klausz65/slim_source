@@ -253,8 +253,8 @@ CLOBBERFILES= $(PDIR) proto_list_$(PKGMACH)
 # build environment and then reference (implicitly or explicitly) the all
 # or install targets.
 #
-MANIFESTS :sh= (cd manifests; print *.mf)
-PKGS= $(MANIFESTS:%.mf=%)
+MANIFESTS :sh= (cd manifests; print *.p5m)
+PKGS= $(MANIFESTS:%.p5m=%)
 DEP_PKGS= $(PKGS:%=$(PDIR)/%.dep)
 PROC_PKGS= $(PKGS:%=$(PDIR)/%.mog)
 
@@ -317,7 +317,7 @@ PKGLISTS= \
 #
 # For a single manifest, the dependency chain looks like this:
 #
-#	raw manifest (mypkg.mf)
+#	raw manifest (mypkg.p5m)
 #		|
 #		| use pkgmogrify to process raw manifest
 #		|
@@ -523,9 +523,9 @@ $(REPOS:%=$(PKGDEST)/repo.%):
 #   dependency checking is turned on by .KEEP_STATE: above.)
 #
 
-.SUFFIXES: .mf .mog .dep .res .pub
+.SUFFIXES: .p5m .mog .dep .res .pub
 
-$(PDIR)/%.mog: manifests/%.mf
+$(PDIR)/%.mog: manifests/%.p5m
 	@print "Processing manifest $(<F)"
 	$(PKGDEBUG)$(RM) $(@) $(@:%.mog=%) $(@:%.mog=%.nodepend) \
 		$(PDIR)/$(@F:%.mog=%).metadata.*
@@ -589,13 +589,13 @@ $(PDIR)/%.pub: $(PDIR)/%.res
 # The implementation notes from the previous rule are applicable
 # here, too.
 #
-$(PROC_SYNTH_PKGS): $(PKGLISTS) $$(@F:%.mog=%.mf)
-	@print "Processing synthetic manifest $(@F:%.mog=%.mf)"
+$(PROC_SYNTH_PKGS): $(PKGLISTS) $$(@F:%.mog=%.p5m)
+	@print "Processing synthetic manifest $(@F:%.mog=%.p5m)"
 	$(PKGDEBUG)$(RM) $(@) $(PDIR)/$(@F:%.mog=%).metadata.*
 	$(PKGDEBUG)eval REPO=redist PKGSTAT=current \
 		`$(PKGMOGRIFY) $(PKGMOG_VERBOSE) -I transforms -I $(PDIR) \
 		$(PKGMOG_DEFINES:%=-D %) -D PKGDEP_TYPE=$(PKGDEP_TYPE) \
-		-O $(@) $(@F:%.mog=%.mf) $(PM_TRANSFORMS) synthetic` ; \
+		-O $(@) $(@F:%.mog=%.p5m) $(PM_TRANSFORMS) synthetic` ; \
 	if [ -f $(@) ]; then \
 		$(LN) -s $(@F) \
 			$(PDIR)/$(@F:%.mog=%).metadata.$$PKGSTAT.$$REPO; \

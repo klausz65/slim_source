@@ -18,21 +18,12 @@
 #
 # CDDL HEADER END
 #
-
 #
 # Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
 #
-
-set name=pkg.fmri value=pkg:/consolidation/install/install-incorporation@$(PKGVERS)
+set name=pkg.fmri value=pkg:/SUNWinstall@$(PKGVERS)
+set name=pkg.renamed value=true
 set name=variant.arch value=$(ARCH)
-set name=pkg.description value="This incorporation constrains packages from the install consolidation."
-set name=pkg.summary value="install consolidation incorporation"
-set name=pkg.depend.install-hold value=core-os.install
-depend fmri=SUNWswmt@0.5.11-0.130 type=incorporate
-<include packages.redist.current>
-<include packages.redist.noredist>
-<include packages.redist.renamed>
-#<include packages.redist.obsolete>
-$(CLOSED_BUILD)<include packages.extra.current>
-#$(CLOSED_BUILD)<include packages.extra.renamed>
-#$(CLOSED_BUILD)<include packages.extra.obsolete>
+set name=variant.opensolaris.zone value=global value=nonglobal
+depend type=require fmri=pkg:/system/install@0.5.11,5.11-0.133
+

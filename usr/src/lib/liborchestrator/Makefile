@@ -66,6 +66,10 @@ LINTERR		= lint_errors
 LINTFILES	= ${SRCS:%.c=${ARCH}/%.ln}
 LINTFLAGS	= -umx ${CPPFLAGS}
 
+# make validate_pkg happy.
+FILEMODE = 0444
+$(ROOTADMINLIBDYNLIB):= FILEMODE = 0755
+
 CLOBBERFILES	= *.po *.mo
 
 MSG_DOMAIN	= SUNW_INSTALL_LIBORCHESTRATOR
@@ -80,11 +84,14 @@ static: $(LIBS)
 
 dynamic: $(DYNLIB) .WAIT $(DYNLIBLINK)
 
+psymlink:
+	@cd $(ROOTPYTHONVENDORINSTALL); $(SYMLINK) ../../../../snadm/lib/libtransfer.so.1 libtransfer.so
+
 install:	all .WAIT \
 		$(ROOTADMINLIB) .WAIT $(ROOTADMINLIBS) $(ROOTADMINLIBDYNLIB) \
 		.WAIT $(ROOTADMINLIBDYNLIBLINK) \
 		$(ROOTOPTADMINLIBDYNLIB) .WAIT $(ROOTOPTADMINLIBDYNLIBLINK) \
-		.WAIT msgs .WAIT $(INSTMSGS)
+		.WAIT msgs .WAIT $(INSTMSGS) psymlink
 
 install_h:	$(ROOTUSRINCLEXP)
 

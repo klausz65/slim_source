@@ -22,9 +22,23 @@
 # Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
 #
 
-set name=pkg.fmri value=pkg:/SUNWdistro-const@$(PKGVERS)
-set name=pkg.renamed value=true
+set name=pkg.fmri value=pkg:/system/install/tests@$(PKGVERS)
+set name=pkg.summary value="OpenIndiana install test utilities"
+set name=pkg.description value="Test utilities for OpenIndiana installation"
+set name=info.classification \
+    value="org.opensolaris.category.2008:System/Administration and Configuration"
 set name=variant.arch value=$(ARCH)
 set name=variant.opensolaris.zone value=global value=nonglobal
-depend fmri=pkg:/install/distribution-constructor@0.5.11,5.11-0.133 type=require
+dir  path=opt group=sys
+dir  path=opt/install-test group=sys
+dir  path=opt/install-test/bin
+file path=opt/install-test/bin/tdmgtst mode=0555
+file path=opt/install-test/bin/tdmgtst_static mode=0555
+file path=opt/install-test/bin/test_td mode=0555
+file path=opt/install-test/bin/test_td_static mode=0555
+file path=opt/install-test/bin/test_ti mode=0555
+file path=opt/install-test/bin/test_ti_static mode=0555
+dir  path=usr group=sys
+dir  path=usr/include
+license cr_Sun license=cr_Sun
 

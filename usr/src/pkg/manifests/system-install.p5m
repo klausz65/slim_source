@@ -22,86 +22,89 @@
 # Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
 #
 set name=pkg.fmri value=pkg:/system/install@$(PKGVERS)
-set name=pkg.description value="Core software libraries and commands used for system installation"
 set name=pkg.summary value="System install libraries and commands"
-set name=info.classification value="org.opensolaris.category.2008:System/Administration and Configuration"
+set name=pkg.description \
+    value="Core software libraries and commands used for system installation"
+set name=info.classification \
+    value="org.opensolaris.category.2008:System/Administration and Configuration"
 set name=variant.arch value=$(ARCH)
 set name=variant.opensolaris.zone value=global value=nonglobal
-depend fmri=compress/gzip type=require
-depend fmri=install/beadm type=require
-depend fmri=library/python/six type=require
-dir path=etc group=sys
-dir path=etc/security group=sys
-dir path=etc/security/prof_attr.d group=sys
-dir path=lib
-dir path=lib/svc
-dir path=lib/svc/manifest group=sys
-dir path=lib/svc/manifest/application group=sys
-dir path=lib/svc/manifest/system/install group=sys
-dir path=lib/svc/method
-dir path=sbin group=sys
-dir path=usr group=sys
-dir path=usr/bin
-dir path=usr/include
-dir path=usr/include/admin
-dir path=usr/lib
-dir path=usr/lib/locale
-dir path=usr/lib/locale/C
-dir path=usr/lib/locale/C/LC_MESSAGES
-dir path=usr/lib/python$(PYVER)
-dir path=usr/lib/python$(PYVER)/vendor-packages
-dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install
-dir path=usr/lib/python$(PYVER)/vendor-packages/osol_install/__pycache__
-dir path=usr/sbin
-dir path=usr/share group=sys
-dir path=usr/share/install group=sys
-dir path=usr/share/lib group=sys
-dir path=usr/share/lib/xml group=sys
-dir path=usr/share/lib/xml/rng group=sys
-dir path=usr/snadm
-dir path=usr/snadm/lib
-
-file path=lib/svc/manifest/system/install/system-config.xml mode=0444 group=sys
+dir  path=etc group=sys
+dir  path=etc/security group=sys
+dir  path=etc/security/prof_attr.d group=sys
+dir  path=lib
+dir  path=lib/svc
+dir  path=lib/svc/manifest group=sys
+dir  path=lib/svc/manifest/application group=sys
+dir  path=lib/svc/manifest/system/install group=sys
+file path=lib/svc/manifest/system/install/system-config.xml group=sys mode=0444
+dir  path=lib/svc/method
 file path=lib/svc/method/svc-system-config mode=0555
+dir  path=sbin group=sys
 file path=sbin/install-finish mode=0555
+dir  path=usr group=sys
+dir  path=usr/bin
 file path=usr/bin/ManifestRead mode=0555
 file path=usr/bin/ManifestServ mode=0555
+dir  path=usr/include
+dir  path=usr/include/admin
 file path=usr/include/admin/ti_api.h
 file path=usr/include/admin/transfermod.h
-file path=usr/lib/locale/C/LC_MESSAGES/SUNW_INSTALL_LIBORCHESTRATOR.po
-file path=usr/lib/locale/C/LC_MESSAGES/SUNW_INSTALL_TEXT_MENU.po
-file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/__init__.py mode=0444
+dir  path=usr/lib
+dir  path=usr/lib/locale
+dir  path=usr/lib/locale/C
+dir  path=usr/lib/locale/C/LC_MESSAGES
+file path=usr/lib/locale/C/LC_MESSAGES/SUNW_INSTALL_LIBORCHESTRATOR.po group=bin mode=0444
+file path=usr/lib/locale/C/LC_MESSAGES/SUNW_INSTALL_TEXT_MENU.po group=bin mode=0444
+dir  path=usr/lib/python$(PYVER)
+dir  path=usr/lib/python$(PYVER)/vendor-packages
+dir  path=usr/lib/python$(PYVER)/vendor-packages/osol_install
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/DefValProc.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ENParser.py
+file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ManifestRead.py
+file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ManifestServ.py
+file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/SocketServProtocol.py
+file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/TreeAcc.py
+file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/__init__.py \
+    mode=0444
+dir  path=usr/lib/python$(PYVER)/vendor-packages/osol_install/__pycache__
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/cfgfiles.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/finalizer.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ict.py mode=0755
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/install_utils.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/liblogsvc.so
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libti.so
-link path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libtransfer.so target=../../../../snadm/lib/libtransfer.so
+link path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libtransfer.so \
+    target=../../../../snadm/lib/libtransfer.so.1
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/libzoneinfo.so
-file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ManifestRead.py
-file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ManifestServ.py
-file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/SocketServProtocol.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/tgt.so
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/tgt_utils.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/ti_defs.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/transfer_defs.py
 file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/transfer_mod.py
-file path=usr/lib/python$(PYVER)/vendor-packages/osol_install/TreeAcc.py
-file path=usr/share/install/sc_template.xml mode=0444 group=sys
+dir  path=usr/sbin
+dir  path=usr/share group=sys
+dir  path=usr/share/install group=sys
+file path=usr/share/install/sc_template.xml group=sys mode=0444
+dir  path=usr/share/lib group=sys
+dir  path=usr/share/lib/xml group=sys
+dir  path=usr/share/lib/xml/rng group=sys
 file path=usr/share/lib/xml/rng/defval-manifest.rng group=sys
+dir  path=usr/snadm
+dir  path=usr/snadm/lib
+link path=usr/snadm/lib/libict.so target=libict.so.1
 file path=usr/snadm/lib/libict.so.1
+link path=usr/snadm/lib/liblogsvc.so target=liblogsvc.so.1
 file path=usr/snadm/lib/liblogsvc.so.1
+link path=usr/snadm/lib/liborchestrator.so target=liborchestrator.so.1
 file path=usr/snadm/lib/liborchestrator.so.1
+link path=usr/snadm/lib/libtd.so target=libtd.so.1
 file path=usr/snadm/lib/libtd.so.1
+link path=usr/snadm/lib/libti.so target=libti.so.1
 file path=usr/snadm/lib/libti.so.1
+link path=usr/snadm/lib/libtransfer.so target=libtransfer.so.1
 file path=usr/snadm/lib/libtransfer.so.1
 license cr_Sun license=cr_Sun
-link path=usr/snadm/lib/libict.so target=libict.so.1
-link path=usr/snadm/lib/liblogsvc.so target=liblogsvc.so.1
-link path=usr/snadm/lib/liborchestrator.so target=liborchestrator.so.1
-link path=usr/snadm/lib/libtd.so target=libtd.so.1
-link path=usr/snadm/lib/libti.so target=libti.so.1
-link path=usr/snadm/lib/libtransfer.so target=libtransfer.so.1
+depend type=require fmri=compress/gzip
+depend type=require fmri=install/beadm
+depend type=require fmri=library/python/six
