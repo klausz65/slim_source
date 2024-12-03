@@ -868,7 +868,7 @@ if [ -z "$MAILTO" -o "$MAILTO" = "nobody" ]; then
 	export MAILTO
 fi
 
-PATH="$OPTHOME/onbld/bin:$OPTHOME/onbld/bin/${MACH}:/usr/ccs/bin"
+PATH="$OPTHOME/onbld/bin:$OPTHOME/onbld/bin/${MACH}"
 PATH="$PATH:$OPTHOME/SUNWspro/bin:/usr/bin:/usr/sbin:/usr/ucb"
 PATH="$PATH:/usr/openwin/bin:/usr/sfw/bin:/opt/sfw/bin:."
 export PATH
@@ -1691,9 +1691,21 @@ if [ -f $TMPDIR/nocompiler ]; then
 	exit 1
 fi
 
-# as
-whence as | tee -a $build_environ_file >> $LOGFILE
-as -V 2>&1 | head -1 | tee -a $build_environ_file >> $LOGFILE
+# First find out which assembler was used to build the compiler,
+# we use. Printing out the first assembler in path, is just plain
+# wrong, if we can't find out which assembler has been used, show
+# assembler in old fashion.
+ASUSED=`$CC -v 2>&1 | nawk '/^Configured/ {gsub("^.*--with-as=",""); gsub(" .*",""); print $0}'`
+if [ -n "$ASUSED" ]; then
+	echo "${ASUSED}:" | tee -a $build_environ_file >> $LOGFILE
+	case $ASUSED in
+		*gas*) $ASUSED --version 2>&1 | tee -a $build_environ_file >> $LOGFILE ;;
+		*) $ASUSED -V 2>&1 | head -1 | tee -a $build_environ_file >> $LOGFILE ;;
+	esac
+else
+	whence as | tee -a $build_environ_file >> $LOGFILE
+	as -V 2>&1 | head -1 | tee -a $build_environ_file >> $LOGFILE
+fi
 echo | tee -a $build_environ_file >> $LOGFILE
 
 # Check that we're running a capable link-editor

@@ -30,6 +30,7 @@
 TARGETDIRS=	$(ROOT.SYS) $(ROOT.BIN) $(OTHERS)
 
 ROOT.SYS= \
+	/.cdrom \
 	/etc \
 	/etc/gconf \
 	/etc/gconf/schemas \
@@ -39,7 +40,9 @@ ROOT.SYS= \
 	/mnt/misc \
 	/sbin \
 	/usr \
-	/usr/share
+	/usr/share \
+	/var \
+	/var/svc
 	
 ROOT.BIN= \
 	/lib \

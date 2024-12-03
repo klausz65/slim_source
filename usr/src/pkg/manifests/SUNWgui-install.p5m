@@ -18,14 +18,13 @@
 #
 # CDDL HEADER END
 #
-
 #
 # Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
 #
 
-set name=pkg.fmri value=pkg:/consolidation/install/install-extra@$(PKGVERS)
+set name=pkg.fmri value=pkg:/SUNWgui-install@$(PKGVERS)
+set name=pkg.renamed value=true
 set name=variant.arch value=$(ARCH)
-set name=org.opensolaris.redist value=nonredist
-set name=pkg.description value="This group package installs all packages from the install consolidation."
-set name=pkg.summary value="install consolidation group package"
-<include packages.extra.current>
+set name=variant.opensolaris.zone value=global
+depend type=require fmri=pkg:/system/install/gui-install@0.5.11,5.11-0.144
+

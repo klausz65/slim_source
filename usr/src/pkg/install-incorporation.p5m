@@ -18,26 +18,23 @@
 #
 # CDDL HEADER END
 #
+
 #
 # Copyright (c) 2010, Oracle and/or its affiliates. All rights reserved.
 #
 
-set name=pkg.fmri value=pkg:/system/install/tests@$(PKGVERS)
-set name=pkg.description value="Test utilities for OpenIndiana installation"
-set name=pkg.summary value="OpenIndiana install test utilities"
-set name=info.classification value="org.opensolaris.category.2008:System/Administration and Configuration"
+<include packages.redist.current>
+<include packages.redist.noredist>
+<include packages.redist.renamed>
+#<include packages.redist.obsolete>
+$(CLOSED_BUILD)<include packages.extra.current>
+set name=pkg.fmri \
+    value=pkg:/consolidation/install/install-incorporation@$(PKGVERS)
+set name=pkg.summary value="install consolidation incorporation"
+set name=pkg.description \
+    value="This incorporation constrains packages from the install consolidation."
+set name=pkg.depend.install-hold value=core-os.install
 set name=variant.arch value=$(ARCH)
-set name=variant.opensolaris.zone value=global value=nonglobal
-dir path=opt group=sys
-dir path=opt/install-test group=sys
-dir path=opt/install-test/bin
-dir path=usr group=sys
-dir path=usr/include
-file path=opt/install-test/bin/tdmgtst mode=0555
-file path=opt/install-test/bin/tdmgtst_static mode=0555
-file path=opt/install-test/bin/test_td mode=0555
-file path=opt/install-test/bin/test_td_static mode=0555
-file path=opt/install-test/bin/test_ti mode=0555
-file path=opt/install-test/bin/test_ti_static mode=0555
-license cr_Sun license=cr_Sun
-
+depend type=incorporate fmri=SUNWswmt@0.5.11-0.130
+#$(CLOSED_BUILD)<include packages.extra.renamed>
+#$(CLOSED_BUILD)<include packages.extra.obsolete>

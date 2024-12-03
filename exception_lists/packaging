@@ -20,7 +20,7 @@
 #
 
 #
-# Copyright 2023 Klaus Ziegler
+# Copyright 2024 Klaus Ziegler
 #
 
 #
@@ -44,3 +44,4 @@ usr/snadm/lib/liborchestrator.a
 usr/snadm/lib/libtd.a
 usr/snadm/lib/libti.a
 usr/snadm/lib/libtransfer.a
+sbin/mkmenu 				sparc
