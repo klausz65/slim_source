@@ -1,4 +1,4 @@
-System Administration Commands             distro_const(1M)
+System Administration Commands             distro_const(8)
 
 NAME
      distro_const - Utility for creating distribution 
@@ -17,23 +17,24 @@ DESCRIPTION
     blueprint for the image.
 
     You can create an ISO image that is comparable to the 
-    live CD image that's distributed as the Oracle Solaris 
+    live CD image that's distributed as the OpenIndiana
     operating system. 
 
     You can create a SPARC AI ISO image that can be 
-    used for network installations of the Oracle Solaris OS 
+    used for network installations of the OpenIndiana OS 
     on SPARC clients, or an x86 AI ISO image that can 
-    be used for network installations of the Oracle Solaris 
+    be used for network installations of the OpenIndiana
     OS on x86 clients.
 
     You can, also, create a text installer image that can
-    be used to install the Oracle Solaris OS on either 
+    be used to install the OpenIndiana OS on either 
     x86 or SPARC systems.
 
     Or, you can create a custom ISO image.
 
-    See the Oracle Solaris Distribution Constructor Guide
-    at http://docs.sun.com for complete instructions.
+    See the OpenIndiana Distribution Constructor Guide at
+    https://docs.openindiana.org/dev/distribution-constructor
+    for complete instructions.
 
     The basic distro_const command with no options creates 
     a full image in one step.
@@ -175,7 +176,7 @@ EXAMPLES
 ATTRIBUTES
 
     /usr/bin/distro_const
-    /usr/share/man/man1m/distro_const.1m
+    /usr/share/man/man8/distro_const.8
 
     ATTRIBUTE TYPE        ATTRIBUTE VALUE
 
@@ -185,8 +186,8 @@ ATTRIBUTES
 
 SEE ALSO
    
-    Oracle Solaris Distribution Constructor Guide
+    OpenSolaris Distribution Constructor Guide
     at http://docs.sun.com
     
     
-Oracle Solaris   Last Changed September 27, 2010
+OpenIndiana Last Changed December 9, 2024
