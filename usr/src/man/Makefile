@@ -24,7 +24,7 @@
 
 include ../Makefile.master
 
-MANPAGES1M = distro_const.1m
+MANPAGES1M = distro_const.8
 
 FILEMODE = 0444
 
