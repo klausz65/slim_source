@@ -24,11 +24,11 @@
 
 include ../Makefile.master
 
-MANPAGES1M = distro_const.8
+MANPAGES8 = distro_const.8
 
 FILEMODE = 0444
 
-ROOTMANPAGES1M = $(MANPAGES1M:%=$(ROOTMAN1M)/%)
+ROOTMANPAGES8 = $(MANPAGES8:%=$(ROOTMAN8)/%)
 ROOTMANPAGES4 = $(MANPAGES4:%=$(ROOTMAN4)/%)
 
 MANPAGES = $(MANPAGES1M) $(MANPAGES4)
@@ -48,9 +48,9 @@ clean:
 
 clobber: clean
 
-install: all $(ROOTMANPAGES1M) $(ROOTMANPAGES4)
+install: all $(ROOTMANPAGES8) $(ROOTMANPAGES4)
 
-$(ROOTMAN1M)/%: %.txt
+$(ROOTMAN8)/%: %.txt
 	$(INS.rename)
 
 $(ROOTMAN4)/%: %.txt
