@@ -85,7 +85,7 @@ ROOT.BIN= \
 	/usr/share/lib/xml \
 	/usr/share/lib/xml/rng \
 	/usr/share/man \
-	/usr/share/man/man1m \
+	/usr/share/man/man8 \
 	/usr/share/man/man4 \
 	/usr/share/text-install \
 	/usr/share/text-install/help \
