@@ -178,7 +178,7 @@
 		-->
 		<pkg_repo_default_authority>
 			<main
-				url="file:///repo/iso/repo"
+				url="https://pkg.openindiana.aurora-opencloud.org/oi-sparc"
 				authname="openindiana.org"/>
 			<!--
 			     If you want to use one or more  mirrors that are
@@ -358,14 +358,21 @@
 			<base_include type="file">usr/lib/devfsadm/linkmod/SUNW_zfs_link.so</base_include>
 			<base_include type="file">usr/lib/devfsadm/devfsadmd</base_include>
 			<base_include type="file">usr/lib/libm.so</base_include>
+			<base_include type="file">usr/lib/libm.so.2</base_include>
+			<base_include type="file">usr/lib/64/libm.so</base_include>
+			<base_include type="file">usr/lib/64/libm.so.2</base_include>
 			<base_include type="file">usr/lib/libfstyp.so</base_include>
 			<base_include type="file">usr/lib/libz.so</base_include>
 			<base_include type="file">usr/lib/libz.so.1</base_include>
 			<base_include type="file">usr/lib/isaexec</base_include>
 			<base_include type="file">usr/lib/libast.so.1</base_include>
+			<base_include type="file">usr/lib/64/libast.so.1</base_include>
 			<base_include type="file">usr/lib/libcmd.so.1</base_include>
+			<base_include type="file">usr/lib/64/libcmd.so.1</base_include>
 			<base_include type="file">usr/lib/libdll.so.1</base_include>
+			<base_include type="file">usr/lib/64/libdll.so.1</base_include>
 			<base_include type="file">usr/lib/libshell.so.1</base_include>
+			<base_include type="file">usr/lib/64/libshell.so.1</base_include>
 			<base_include type="file">usr/lib/libcrypt.so.1</base_include>
 			<base_include type="file">usr/lib/libmapmalloc.so.1</base_include>
 			<base_include type="file">usr/share/lib/xml/dtd/service_bundle.dtd.1</base_include>
@@ -407,21 +414,66 @@
 			<base_include type="file">lib/libscf.so.1</base_include>
 			<base_include type="file">lib/libuutil.so.1</base_include>
 			<base_include type="file">lib/libumem.so.1</base_include>
+			<base_include type="file">lib/64/libumem.so.1</base_include>
 			<base_include type="file">lib/libmd5.so.1</base_include>
 			<base_include type="file">lib/libnvpair.so.1</base_include>
 			<base_include type="file">lib/libc.so.1</base_include>
+			<base_include type="file">lib/64/libc.so.1</base_include>
 			<base_include type="file">lib/libpthread.so.1</base_include>
 			<base_include type="file">lib/libm.so.2</base_include>
+			<base_include type="file">lib/64/libm.so.2</base_include>
 			<base_include type="file">lib/libnsl.so.1</base_include>
+			<base_include type="file">lib/64/libnsl.so.1</base_include>
 			<base_include type="file">lib/libgen.so.1</base_include>
 			<base_include type="file">lib/libsocket.so.1</base_include>
+			<base_include type="file">lib/64/libsocket.so.1</base_include>
 			<base_include type="file">lib/libcurses.so.1</base_include>
 			<base_include type="file">lib/libmp.so.2</base_include>
+			<base_include type="file">lib/64/libmp.so.2</base_include>
 			<base_include type="file">lib/libmd.so.1</base_include>
+			<base_include type="file">lib/64/libmd.so.1</base_include>
 			<base_include type="file">usr/lib/libxml2.so.2</base_include>
 			<base_include type="file">usr/lib/libl.so.1</base_include>
 			<base_include type="file">usr/lib/libtecla.so.1</base_include>
 			<base_include type="file">usr/lib/liblzma.so.5</base_include>
+
+			<!-- libraries for /usr/bin/cut BugID: #16318-->
+			<base_include type="file">usr/lib/64/libsum.so.1</base_include>
+
+			<!-- libraries for /usr/sbin/ifconfig|/lib/svc/method/net-netmask BugID: #16318-->
+			<base_include type="file">lib/libcmdutils.so.1</base_include>
+			<base_include type="file">lib/libcontract.so.1</base_include>
+			<base_include type="file">lib/libcustr.so.1</base_include>
+			<base_include type="file">lib/libdhcpagent.so.1</base_include>
+			<base_include type="file">lib/libdhcputil.so.1</base_include>
+			<base_include type="file">lib/libdlpi.so.1</base_include>
+			<base_include type="file">lib/libipadm.so.1</base_include>
+			<base_include type="file">lib/libipmp.so.1</base_include>
+			<base_include type="file">lib/libsecdb.so.1</base_include>
+			<base_include type="file">lib/libuuid.so.1</base_include>
+			<base_include type="file">lib/libxnet.so.1</base_include>
+
+			<!-- libraries for //sbin/dladm BugID: #16318-->
+			<base_include type="file">lib/libbsm.so.1</base_include>
+			<base_include type="file">usr/lib/librstp.so.1</base_include>
+			<base_include type="file">usr/lib/libtsol.so.2</base_include>
+
+			<!-- libraries for /lib/svc/method/svc-fcoei BugID: #16318-->
+			<base_include type="file">lib/libavl.so.1</base_include>
+			<base_include type="file">lib/libdevinfo.so.1</base_include>
+			<base_include type="file">lib/libdladm.so.1</base_include>
+			<base_include type="file">lib/libinetutil.so.1</base_include>
+			<base_include type="file">lib/libkstat.so.1</base_include>
+			<base_include type="file">lib/libofmt.so.1</base_include>
+			<base_include type="file">lib/librcm.so.1</base_include>
+			<base_include type="file">lib/libsec.so.1</base_include>
+			<base_include type="file">lib/libvarpd.so.1</base_include>
+			<base_include type="file">usr/lib/libexacct.so.1</base_include>
+			<base_include type="file">usr/lib/libfcoe.so.1</base_include>
+			<base_include type="file">usr/lib/libidmap.so.1</base_include>
+			<base_include type="file">usr/lib/libidspace.so.1</base_include>
+			<base_include type="file">usr/lib/libpool.so.1</base_include>
+			<base_include type="file">usr/lib/librename.so.1</base_include>
 
 			<!-- 
 			     Files which have to be left uncompressed in boot archive.
