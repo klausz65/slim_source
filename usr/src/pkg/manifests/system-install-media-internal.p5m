@@ -37,26 +37,26 @@ file path=etc/security/exec_attr.d/system%2Finstall%2Fmedia%2Finternal group=sys
 dir  path=etc/svc group=sys
 dir  path=etc/svc/profile group=sys
 file path=etc/svc/profile/network_nwam.xml group=sys mode=0444
-dir  path=jack owner=root group=staff
-file path=jack/.Xclients owner=root group=staff mode=0755
-file path=jack/.bashrc owner=root group=staff mode=0644
-dir  path=jack/.config owner=root group=staff
-dir  path=jack/.config/autostart owner=root group=staff
-file path=jack/.config/autostart/ddu_silent.desktop owner=root group=staff \
+dir  path=jack owner=jack group=staff
+file path=jack/.Xclients owner=jack group=staff mode=0755
+file path=jack/.bashrc owner=jack group=staff mode=0644
+dir  path=jack/.config owner=jack group=staff
+dir  path=jack/.config/autostart owner=jack group=staff
+file path=jack/.config/autostart/ddu_silent.desktop owner=jack group=staff \
     mode=0755
-file path=jack/.config/autostart/iotrace.desktop owner=root group=staff \
+file path=jack/.config/autostart/iotrace.desktop owner=jack group=staff \
     mode=0755
-file path=jack/.dmrc owner=root group=staff mode=0644
-file path=jack/.profile owner=root group=staff mode=0644
-file path=jack/.xscreensaver owner=root group=staff
-dir  path=jack/Desktop owner=root group=staff
-file path=jack/Desktop/.os-icons-installed owner=root group=staff
-file path=jack/Desktop/ddu.desktop owner=root group=staff mode=0755
-file path=jack/Desktop/install_openindiana.desktop owner=root group=staff \
+file path=jack/.dmrc owner=jack group=staff mode=0644
+file path=jack/.profile owner=jack group=staff mode=0644
+file path=jack/.xscreensaver owner=jack group=staff
+dir  path=jack/Desktop owner=jack group=staff
+file path=jack/Desktop/.os-icons-installed owner=jack group=staff
+file path=jack/Desktop/ddu.desktop owner=jack group=staff mode=0755
+file path=jack/Desktop/install_openindiana.desktop owner=jack group=staff \
     mode=0755
-file path=jack/Desktop/text_install_openindiana.desktop owner=root group=staff \
+file path=jack/Desktop/text_install_openindiana.desktop owner=jack group=staff \
     mode=0755
-file path=jack/xorg.conf.vesa owner=root group=staff
+file path=jack/xorg.conf.vesa owner=jack group=staff
 dir  path=lib
 dir  path=lib/svc
 dir  path=lib/svc/manifest group=sys
