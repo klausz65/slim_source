@@ -299,13 +299,17 @@
 			<base_include type="file">usr/bin/echo</base_include>
 			<base_include type="file">usr/bin/expr</base_include>
 			<base_include type="file">usr/bin/false</base_include>
+			<base_include type="file">usr/bin/file</base_include>
 			<base_include type="file">usr/bin/grep</base_include>
 			<base_include type="file">usr/bin/ksh</base_include>
+			<base_include type="file">usr/bin/ldd</base_include>
+			<base_include type="file">usr/bin/less</base_include>
 			<base_include type="file">usr/bin/ls</base_include>
 			<base_include type="file">usr/bin/mkdir</base_include>
 			<base_include type="file">usr/bin/more</base_include>
 			<base_include type="file">usr/bin/nawk</base_include>
 			<base_include type="file">usr/bin/pkill</base_include>
+			<base_include type="file">usr/bin/ps</base_include>
 			<base_include type="file">usr/bin/rm</base_include>
 			<base_include type="file">usr/bin/sed</base_include>
 			<base_include type="file">usr/bin/sleep</base_include>
@@ -314,22 +318,27 @@
 			<base_include type="file">usr/bin/sparcv9/ksh93</base_include>
 			<base_include type="file">usr/bin/sparcv9/sort</base_include>
 			<base_include type="file">usr/bin/svcprop</base_include>
-			<base_include type="file">usr/bin/true</base_include>
+			<base_include type="file">usr/bin/svcs</base_include>
+			<base_include type="file">usr/bin/tail</base_include>
 			<base_include type="file">usr/bin/test</base_include>
+			<base_include type="file">usr/bin/true</base_include>
 			<base_include type="file">usr/bin/vi</base_include>
-			<base_include type="file">usr/bin/wget</base_include>
+			<base_include type="file">usr/bin/which</base_include>
 			<base_include type="file">usr/has/bin/vi</base_include>
 			<base_include type="file">usr/sbin/chroot</base_include>
 			<base_include type="file">usr/sbin/devfsadm</base_include>
 			<base_include type="file">usr/sbin/df</base_include>
+			<base_include type="file">usr/sbin/format</base_include>
 			<base_include type="file">usr/sbin/hostconfig</base_include>
 			<base_include type="file">usr/sbin/lofiadm</base_include>
 			<base_include type="file">usr/sbin/modload</base_include>
 			<base_include type="file">usr/sbin/mount</base_include>
 			<base_include type="file">usr/sbin/nwamadm</base_include>
 			<base_include type="file">usr/sbin/nwamcfg</base_include>
+			<base_include type="file">usr/sbin/ping</base_include>
 			<base_include type="file">usr/sbin/pmadm</base_include>
 			<base_include type="file">usr/sbin/prtconf</base_include>
+			<base_include type="file">usr/sbin/prtvtoc</base_include>
 			<base_include type="file">usr/sbin/svccfg</base_include>
 			<base_include type="file">usr/sbin/svcadm</base_include>
 			<base_include type="file">usr/sbin/syslogd</base_include>
@@ -406,11 +415,92 @@
 			<base_exclude type="dir">etc/notices</base_exclude>
 			<base_exclude type="dir">var/sadm/pkg</base_exclude>
 
-			<!-- libraries needed by /usr/bin/bash -->
+			<!-- libraries for /lib/svc/method/svc-fcoei BugID: #16318-->
+			<base_include type="file">lib/libavl.so.1</base_include>
+			<base_include type="file">lib/libdevinfo.so.1</base_include>
+			<base_include type="file">lib/libdladm.so.1</base_include>
+			<base_include type="file">lib/libinetutil.so.1</base_include>
+			<base_include type="file">lib/libkstat.so.1</base_include>
+			<base_include type="file">lib/libofmt.so.1</base_include>
+			<base_include type="file">lib/librcm.so.1</base_include>
+			<base_include type="file">lib/libsec.so.1</base_include>
+			<base_include type="file">lib/libvarpd.so.1</base_include>
+			<base_include type="file">usr/lib/libexacct.so.1</base_include>
+			<base_include type="file">usr/lib/libfcoe.so.1</base_include>
+			<base_include type="file">usr/lib/libidmap.so.1</base_include>
+			<base_include type="file">usr/lib/libidspace.so.1</base_include>
+			<base_include type="file">usr/lib/libpool.so.1</base_include>
+			<base_include type="file">usr/lib/librename.so.1</base_include>
+
+			<!-- libraries for /sbin/ifconfig|/lib/svc/method/net-netmask BugID: #16318-->
+			<base_include type="file">lib/libcmdutils.so.1</base_include>
+			<base_include type="file">lib/libcontract.so.1</base_include>
+			<base_include type="file">lib/libcustr.so.1</base_include>
+			<base_include type="file">lib/libdhcpagent.so.1</base_include>
+			<base_include type="file">lib/libdhcputil.so.1</base_include>
+			<base_include type="file">lib/libdlpi.so.1</base_include>
+			<base_include type="file">lib/libipadm.so.1</base_include>
+			<base_include type="file">lib/libipmp.so.1</base_include>
+			<base_include type="file">lib/libsecdb.so.1</base_include>
+			<base_include type="file">lib/libuuid.so.1</base_include>
+			<base_include type="file">lib/libxnet.so.1</base_include>
+
+			<!-- libraries for /sbin/dladm BugID: #16318-->
+			<base_include type="file">lib/libbsm.so.1</base_include>
+			<base_include type="file">usr/lib/librstp.so.1</base_include>
+			<base_include type="file">usr/lib/libtsol.so.2</base_include>
+
+			<!-- libraries for /usr/bin/bash -->
 			<base_include type="file">usr/lib/64/libncurses.so.5</base_include>
 			<base_include type="file">usr/lib/64/libncurses.so.5.9</base_include>
 
-			<!-- libraries needed by /usr/sbin/svccfg -->
+			<!-- libraries for /usr/bin/cut BugID: #16318-->
+			<base_include type="file">usr/lib/64/libsum.so.1</base_include>
+
+			<!-- libraries for /usr/bin/ps-->
+			<base_include type="file">/lib/64/libavl.so.1</base_include>
+			<base_include type="file">/lib/64/libctf.so.1</base_include>
+			<base_include type="file">/lib/64/libdevinfo.so.1</base_include>
+			<base_include type="file">/lib/64/libdwarf.so.1</base_include>
+			<base_include type="file">/lib/64/libelf.so.1</base_include>
+			<base_include type="file">/lib/64/libgen.so.1</base_include>
+			<base_include type="file">/lib/64/libnvpair.so.1</base_include>
+			<base_include type="file">/lib/64/libproc.so.1</base_include>
+			<base_include type="file">/lib/64/libpthread.so.1</base_include>
+			<base_include type="file">/lib/64/librtld.so.1</base_include>
+			<base_include type="file">/lib/64/libscf.so.1</base_include>
+			<base_include type="file">/lib/64/libsec.so.1</base_include>
+			<base_include type="file">/lib/64/libsecdb.so.1</base_include>
+			<base_include type="file">/lib/64/libsmbios.so.1</base_include>
+			<base_include type="file">/lib/64/libuutil.so.1</base_include>
+			<base_include type="file">/usr/lib/64/libdisasm.so.1</base_include>
+			<base_include type="file">/usr/lib/64/libexacct.so.1</base_include>
+			<base_include type="file">/usr/lib/64/libidmap.so.1</base_include>
+			<base_include type="file">/usr/lib/64/liblzma.so.5</base_include>
+			<base_include type="file">/usr/lib/64/libpool.so.1</base_include>
+			<base_include type="file">/usr/lib/64/libproject.so.1</base_include>
+			<base_include type="file">/usr/lib/64/libsaveargs.so.1</base_include>
+			<base_include type="file">/usr/lib/64/libxml2.so.2</base_include>
+			<base_include type="file">/usr/lib/64/libz.so.1</base_include>
+
+			<!-- libraries for /usr/bin/svcs-->
+			<base_include type="file">/lib/libctf.so.1</base_include>
+			<base_include type="file">/lib/libdwarf.so.1</base_include>
+			<base_include type="file">/lib/libelf.so.1</base_include>
+			<base_include type="file">/lib/libproc.so.1</base_include>
+			<base_include type="file">/lib/librtld_db.so.1</base_include>
+			<base_include type="file">/usr/lib/libbrand.so.1</base_include>
+			<base_include type="file">/usr/lib/libzonecfg.so.1</base_include>
+
+			<!-- libraries for /usr/sbin/format -->
+			<base_include type="file">lib/libadm.so.1</base_include>
+			<base_include type="file">lib/libefi.so.1</base_include>
+			<base_include type="file">lib/libevid.so.1</base_include>
+			<base_include type="file">lib/libsysevent.so.1</base_include>
+			<base_include type="file">usr/lib/libdiskmgt.so.1</base_include>
+			<base_include type="file">usr/lib/libsmbios.so.1</base_include>
+
+			<!-- libraries for /usr/sbin/svccfg -->
 			<base_include type="file">lib/libscf.so.1</base_include>
 			<base_include type="file">lib/libuutil.so.1</base_include>
 			<base_include type="file">lib/libumem.so.1</base_include>
@@ -436,44 +526,6 @@
 			<base_include type="file">usr/lib/libl.so.1</base_include>
 			<base_include type="file">usr/lib/libtecla.so.1</base_include>
 			<base_include type="file">usr/lib/liblzma.so.5</base_include>
-
-			<!-- libraries for /usr/bin/cut BugID: #16318-->
-			<base_include type="file">usr/lib/64/libsum.so.1</base_include>
-
-			<!-- libraries for /usr/sbin/ifconfig|/lib/svc/method/net-netmask BugID: #16318-->
-			<base_include type="file">lib/libcmdutils.so.1</base_include>
-			<base_include type="file">lib/libcontract.so.1</base_include>
-			<base_include type="file">lib/libcustr.so.1</base_include>
-			<base_include type="file">lib/libdhcpagent.so.1</base_include>
-			<base_include type="file">lib/libdhcputil.so.1</base_include>
-			<base_include type="file">lib/libdlpi.so.1</base_include>
-			<base_include type="file">lib/libipadm.so.1</base_include>
-			<base_include type="file">lib/libipmp.so.1</base_include>
-			<base_include type="file">lib/libsecdb.so.1</base_include>
-			<base_include type="file">lib/libuuid.so.1</base_include>
-			<base_include type="file">lib/libxnet.so.1</base_include>
-
-			<!-- libraries for //sbin/dladm BugID: #16318-->
-			<base_include type="file">lib/libbsm.so.1</base_include>
-			<base_include type="file">usr/lib/librstp.so.1</base_include>
-			<base_include type="file">usr/lib/libtsol.so.2</base_include>
-
-			<!-- libraries for /lib/svc/method/svc-fcoei BugID: #16318-->
-			<base_include type="file">lib/libavl.so.1</base_include>
-			<base_include type="file">lib/libdevinfo.so.1</base_include>
-			<base_include type="file">lib/libdladm.so.1</base_include>
-			<base_include type="file">lib/libinetutil.so.1</base_include>
-			<base_include type="file">lib/libkstat.so.1</base_include>
-			<base_include type="file">lib/libofmt.so.1</base_include>
-			<base_include type="file">lib/librcm.so.1</base_include>
-			<base_include type="file">lib/libsec.so.1</base_include>
-			<base_include type="file">lib/libvarpd.so.1</base_include>
-			<base_include type="file">usr/lib/libexacct.so.1</base_include>
-			<base_include type="file">usr/lib/libfcoe.so.1</base_include>
-			<base_include type="file">usr/lib/libidmap.so.1</base_include>
-			<base_include type="file">usr/lib/libidspace.so.1</base_include>
-			<base_include type="file">usr/lib/libpool.so.1</base_include>
-			<base_include type="file">usr/lib/librename.so.1</base_include>
 
 			<!-- 
 			     Files which have to be left uncompressed in boot archive.
