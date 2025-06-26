@@ -89,7 +89,7 @@ function update_term_menu_str
 function set_term_type
 {
     export TERM=xterm
-    arch=`/usr/bin/uname -p`
+    arch=`/sbin/uname -p`
     if [[ "${arch}" = "sparc" ]] ; then
 	output_device=`/usr/sbin/prtconf -vp | 			\
 		/usr/bin/grep "output-device" | 		\
@@ -173,7 +173,7 @@ for ((;;)) ; do
 	clear
 	printf \
 	    "`gettext 'Welcome to the OpenIndiana %s installation menu'`" \
-	    "`uname -v`"
+	    "`/sbin/uname -v`"
 	printf " \n\n"
 	for i in "${!menu_items[@]}"; do
 		print "\t$((${i} + 1))  ${menu_items[$i].menu_str}"
