@@ -54,7 +54,7 @@ class ZpoolScreen(BaseScreen):
     NO_TARGETS = _("%(release)s cannot be installed on any pool") % RELEASE
     TGT_ERROR = _("An error occurred while searching for installation"
                   " targets. Please check the install log and file a bug"
-                  " at bugs.openindiana.org.")
+                  " at www.illumos.org/projects/openindiana/issues.")
     OVERWRITE_BOOT_CONFIGURATION_LABEL = _("Overwrite pool's boot configuration")
     BE_LABEL = _("Select BE name:")
     FILESYSTEM_EXISTS_ERROR = _("ZFS file system"
