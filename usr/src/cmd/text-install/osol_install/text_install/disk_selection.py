@@ -80,7 +80,7 @@ class DiskScreen(BaseScreen):
     NO_TARGETS = _("%(release)s cannot be installed on any disk") % RELEASE
     TGT_ERROR = _("An error occurred while searching for installation"
                   " targets. Please check the install log and file a bug"
-                  " at bugs.openindiana.org.")
+                  " at www.illumos.org/projects/openindiana/issues.")
     
     DISK_HEADERS = [(6, _("Use")),
                     (8, _("Type")),
