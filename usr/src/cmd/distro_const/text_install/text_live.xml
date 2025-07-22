@@ -104,6 +104,43 @@
   <service name='system/ca-certificates' version='1' type='service'>
     <instance name='default' enabled='false' />
   </service>
+  <service name='application/cups/scheduler' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+  <service name='network/ipfilter' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <!--
+      Make sure GNOME cache services for the text image are all disabled.
+  -->
+  <service name='application/desktop-cache/desktop-mime-cache' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <service name='application/desktop-cache/gconf-cache' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <service name='application/desktop-cache/gio-module-cache' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <service name='application/desktop-cache/icon-cache' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <service name='application/desktop-cache/input-method-cache' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <service name='application/desktop-cache/mime-types-cache' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
+
+  <service name='application/desktop-cache/pixbuf-loaders-installer' version='1' type='service'>
+    <instance name='default' enabled='false' />
+  </service>
 
   <!--
 	Text mode menu
