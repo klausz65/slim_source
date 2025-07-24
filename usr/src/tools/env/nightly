@@ -224,6 +224,7 @@ function build {
 		| egrep -v "parameter <PSTAMP> set to" \
 		| egrep -v "Ignoring unknown host" \
 		| egrep -v "redefining segment flags attribute for" \
+		| egrep -v "Message contains an embedded URL" \
 		| tee $TMPDIR/build_warnings${SUFFIX} >> $mail_msg_file
 	if [[ -s $TMPDIR/build_warnings${SUFFIX} ]]; then
 		build_ok=n
