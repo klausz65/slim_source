@@ -416,10 +416,15 @@ zfm_create_pool(nvlist_t *attrs)
 	    "zfs: ZFS pool <%s> will be created on slice <%s>\n",
 	    zfs_pool_name, zfs_device);
 
-	(void) snprintf(cmd, sizeof (cmd),
-	    "/usr/sbin/zpool create -f %s %s",
-	    zfs_pool_name, zfs_device);
-
+	if ((strlen(zfs_device) - strcspn(zfs_device, "d0")) == 2) {
+		(void) snprintf(cmd, sizeof (cmd),
+		    "/usr/sbin/zpool create -f -B %s %s",
+		    zfs_pool_name, zfs_device);
+	} else {
+		(void) snprintf(cmd, sizeof (cmd),
+		    "/usr/sbin/zpool create -f %s %s",
+		    zfs_pool_name, zfs_device);
+	}
 	if (zfm_system(cmd) == -1) {
 		zfm_debug_print(LS_DBGLVL_ERR, "zfs: "
 		    "Couldn't create ZFS pool\n");
