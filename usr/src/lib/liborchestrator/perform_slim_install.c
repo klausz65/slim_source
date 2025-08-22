@@ -1236,7 +1236,7 @@ do_ti(void *args)
 	 * Create ZFS root pool.
 	 */
 
-	om_log_print("Set zfs root pool device\n");
+	om_log_print("Set zfs root pool device %s\n", disk_name);
 
 	if (prepare_zfs_root_pool_attrs(&ti_ex_attrs, disk_name,
 	    install_slice_id) != OM_SUCCESS) {
@@ -2264,7 +2264,12 @@ prepare_zfs_root_pool_attrs(nvlist_t **attrs, char *disk_name, uint8_t slice_id)
 		return (OM_FAILURE);
 	}
 
-	snprintf(zfs_device, sizeof (zfs_device), "%ss%d", disk_name, slice_id);
+	if (whole_disk != 0) {
+		om_log_print("EFI boot requires whole disk layout, slice %d could not be used . \n", slice_id);
+		snprintf(zfs_device, sizeof (zfs_device), "%s", disk_name);
+	} else {
+		snprintf(zfs_device, sizeof (zfs_device), "%ss%d", disk_name, slice_id);
+	}
 
 	if (nvlist_add_string(*attrs, TI_ATTR_ZFS_RPOOL_DEVICE,
 	    zfs_device) != 0) {
