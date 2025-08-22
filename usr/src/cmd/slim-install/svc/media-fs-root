@@ -30,7 +30,6 @@
 # Make sure that the libraries essential to this stage of booting can be found.
 LD_LIBRARY_PATH=/lib; export LD_LIBRARY_PATH
 
-builtin grep
 builtin rm
 
 #
@@ -71,18 +70,14 @@ fi
 # For devices that do, attempt to mount them to see if the 
 # compressed /usr filesystem exists
 
-PTYP=`/sbin/uname -p`
-if [ $PTYP = "sparc" ]; then
-	FSTYP=hsfs
-	OPTIONS="ro"
-else
-	FSTYP=ufs
-	OPTIONS="nologging,noatime"
-fi
+OPTIONS="ro,nologging,noatime"
 
 /sbin/listusb | while read dev rdev
 do
-	/usr/lib/fs/${FSTYP}/fstyp $rdev 2>&1 | grep "^${FSTYP}$"
+	FSTYP=$(/usr/lib/fs/hsfs/fstyp $rdev 2>/dev/null)
+	if [ X$FSTYP != "Xhsfs" ]; then
+		FSTYP=$(/usr/lib/fs/ufs/fstyp $rdev 2>/dev/null)
+	fi
 	if [ $? -eq 0 ]; then
 		$MOUNT -F $FSTYP -o $OPTIONS $dev /.cdrom || break
 		if [[ "$volsetid" != "$( < "/.cdrom/.volsetid" )" ]]; then
