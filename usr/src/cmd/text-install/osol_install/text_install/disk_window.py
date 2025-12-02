@@ -160,8 +160,8 @@ class DiskWindow(InnerWindow):
             self.has_partition_data = True
         elif disk_info.slices:
             self.has_partition_data = False
-#        else:
-#            return
+        else:
+            return
         
         if self.has_partition_data:
             if self.editable:
