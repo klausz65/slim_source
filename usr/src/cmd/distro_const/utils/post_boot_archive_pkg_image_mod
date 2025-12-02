@@ -102,6 +102,11 @@ if [ ! -d ${BA_BUILD} ] ; then
 	exit 1
 fi
 
+if [  -f ${BA_BUILD}/.usr.tar.xz ] ; then
+	rm -rf ${PKG_IMG_PATH}/usr
+	exit 0
+fi
+
 # Copying volsetid to live CD root		
 cp ${BA_BUILD}/.volsetid ${PKG_IMG_PATH}
 
@@ -137,7 +142,7 @@ DIST_ISO_SORT=$($MANIFEST_READ -k $MFEST_SOCK "iso_sort")
 # package installation; if left in place it becomes a symlink
 # into /mnt/misc which will cause the installer's attempt to
 # create a user account to fail
-rm ${PKG_IMG_PATH}/etc/.pwd.lock
+rm -f ${PKG_IMG_PATH}/etc/.pwd.lock
 
 if [ ! -d $PKG_IMG_PATH ] ; then
 	print -u2 -f "%s: Image package area %s is not valid\n" \
