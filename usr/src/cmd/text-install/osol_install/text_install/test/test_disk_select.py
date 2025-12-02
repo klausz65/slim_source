@@ -23,18 +23,22 @@
 #
 
 '''
+Note:
+these tests only run successfull on a system, which is to be installed.
 To run these tests:
 
-1) nightly -n developer.sh # build the gate
-2) export PYTHONPATH=${WS}/proto/root_i386/usr/snadm/lib:${WS}/proto/root_i386/usr/lib/python3.9/vendor-packages
-3) pfexec python test_disk_select.py
+python test_disk_select.py
 
-A single test may be run by specifying the test as an argument to step 3, e.g.:
-pfexec python test_disk_select.py OnActivateTest.test_on_activate_default
+A single test may be run by specifying the test as an argument:
 
-Since the proto area is used for the PYTHONPATH, the gate must be rebuilt for
-these tests to pick up any changes in the tested code.
+python test_disk_select.py OnActivateTest.test_on_activate_default
 
+expected output of all 8 tests may look similar to this:
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.145s
+
+OK
 '''
 
 import numbers

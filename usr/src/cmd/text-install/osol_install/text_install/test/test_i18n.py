@@ -34,7 +34,12 @@ python test_i18n.py I18nTestCase.test_charwidth
 
 Since the proto area is used for the PYTHONPATH, the gate must be rebuilt for
 these tests to pick up any changes in the tested code.
+expected output of all 5 tests may look similar to this:
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.016s
 
+OK
 '''
 
 import unittest
