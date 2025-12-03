@@ -21,7 +21,7 @@
 #
 # Copyright (c) 2008, 2010, Oracle and/or its affiliates. All rights reserved.
 #
-"""boot_archive_archive - Release the boot arhive mount and archive the
+"""boot_archive_archive - Release the boot archive mount and archive the
 boot archive area.
 
 """
