@@ -113,10 +113,10 @@
     <instance name='default' enabled='true'>
       <property_group name='start' type='method'>
         <propval name='exec' type='astring'
-          value='/usr/bin/sh -c ". /lib/svc/share/smf_include.sh;
+          value='/usr/bin/sh -c &apos;. /lib/svc/share/smf_include.sh;
             /usr/bin/vmware-checkvm &gt;/dev/null 2&gt;&amp;1 ||
             exit $SMF_EXIT_TEMP_DISABLE;
-            /usr/bin/vmtoolsd -c /etc/vmware-tools/tools.conf &amp;"'/>
+            /usr/bin/vmtoolsd -c /etc/vmware-tools/tools.conf &amp;&apos;'/>
       </property_group>
     </instance>
   </service>
