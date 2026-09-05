@@ -104,6 +104,22 @@
   <service name='system/ca-certificates' version='1' type='service'>
     <instance name='default' enabled='false' />
   </service>
+  <!--
+      VMware Tools is included in the text image. Temporarily disable its
+      service on other hypervisors and bare metal to avoid restart failures
+      interrupting the installer console.
+  -->
+  <service name='system/virtualization/open-vm-tools' version='1' type='service'>
+    <instance name='default' enabled='true'>
+      <property_group name='start' type='method'>
+        <propval name='exec' type='astring'
+          value='/usr/bin/sh -c ". /lib/svc/share/smf_include.sh;
+            /usr/bin/vmware-checkvm &gt;/dev/null 2&gt;&amp;1 ||
+            exit $SMF_EXIT_TEMP_DISABLE;
+            /usr/bin/vmtoolsd -c /etc/vmware-tools/tools.conf &amp;"'/>
+      </property_group>
+    </instance>
+  </service>
   <service name='application/cups/scheduler' version='1' type='service'>
     <instance name='default' enabled='false' />
   </service>
