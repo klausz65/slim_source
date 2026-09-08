@@ -241,7 +241,6 @@ if __name__ == '__main__':
                     # display issues make it impossible for the user to
                     # quit gracefully
                     CTRL_C = signal.signal(signal.SIGINT, signal.SIG_IGN)
-            cleanup_curses()
             ERRCODE = 0
         finally:
             cleanup_curses()

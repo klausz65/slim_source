@@ -404,8 +404,6 @@ class DiskScreen(BaseScreen):
 
     def validate(self):
         '''Validate the size of the disk.'''
-        disk = self.disk_detail.disk_info
-        
         warning_txt = []
         disk_selected = False
         gpt_disk_selected = False
@@ -413,7 +411,7 @@ class DiskScreen(BaseScreen):
         for d in self.disks:
             if d.used:
                 disk_selected = True
-                if DiskInfo.GPT in disk.label:
+                if DiskInfo.GPT in d.label:
                    gpt_disk_selected = True 
 
         if not disk_selected:
